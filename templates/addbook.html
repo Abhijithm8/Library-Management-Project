@@ -1,0 +1,30 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+<h3 align="center">Add Book</h3>
+<link href="{% static 'css/addbook.css' %}" rel="stylesheet">
+<form action="bookdata" method="post">
+    {% csrf_token %}
+<table align="center" cellpadding="12" style="background-color:LightGreen;border:solid">
+    <tr>
+        <td>Book Name:</td>
+        <td><input type="text" name="tbname"></td>
+    </tr>
+    <tr>
+        <td>Author Name:</td>
+        <td><input type="text" name="tbaname"></td>
+    </tr>
+    <tr>
+        <td>Course:</td>
+        <td><select name="ddlcourse">
+            {% for i in course %}
+            <option>{{ i.course_name }}</option>
+            {% endfor%}
+        </select></td>
+    </tr>
+    <tr>
+        <td><input type="submit" name="btnsub" value="submit"></td>
+    </tr>
+</table>
+</form>
+{% endblock %}
