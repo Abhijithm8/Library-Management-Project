@@ -1,0 +1,36 @@
+{% extends 'navbar2.html' %}
+{% block content %}
+{% load static %}
+<h2 align="center">Student Profile</h2>
+<link href="{% static 'css/stdprofile.css' %}" rel="stylesheet">
+<div  align="center">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/000/350/111/small/Education__28193_29.jpg" width="200" height="200">
+<form method="post">
+    {% csrf_token %}
+    <h3>{{data}}</h3>
+    <input type="submit" value="Edit Profile">
+</form>
+</div>
+<div align="center">
+    <table cellpadding="12" style="background-color:#DC143C;border:solid">
+        <tr>
+            <td>UserName</td>
+            <td><input type="text" name="tbuname" value="{{sd.student_name}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Semester</td>
+            <td><input type="text" name="tbsem" value="{{sd.student_sem}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Phone number</td>
+            <td><input type="number" name="tbphno" value="{{sd.student_phno}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Course</td>
+            <td><input type="text" name="tbcourse" value="{{sd.student_course}}" readonly></td>
+        </tr>
+    </table>
+
+</div>
+
+{% endblock %}

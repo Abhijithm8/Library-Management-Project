@@ -1,0 +1,37 @@
+{% extends 'navbar2.html' %}
+{% block content %}
+{% load static %}
+<h2 align="center">Update Profile</h2>
+<link href="{% static 'css/updateprofile.css' %}" rel="stylesheet">
+<form action="uprofiledata" method="post">
+    {% csrf_token %}
+    <table cellpadding="12" align="center" style="background-color:#FFE4B5;border:solid">
+        <tr>
+            <td>UserName</td>
+            <td><input type="text" name="tbuname" value="{{sd.student_name}}"></td>
+        </tr>
+        <tr>
+            <td>Semester</td>
+            <td><input type="text" name="tbsem" value="{{sd.student_sem}}"></td>
+        </tr>
+        <tr>
+            <td>Phone number</td>
+            <td><input type="number" name="tbphno" value="{{sd.student_phno}}"></td>
+        </tr>
+        <tr>
+            <td>Course</td>
+            <td><input type="text" name="tbcourse" value="{{sd.student_course}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" name="tbpass" value="{{sd.student_password}}" readonly></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="tbsubmit" value="Submit"></td>
+        </tr>
+    </table>
+
+</form>
+
+{% endblock %}

@@ -162,3 +162,26 @@ def issuedbkdata_fun(request):
 
 def logoutstd_fun(request):
     return redirect('login')
+
+
+def stdprofile_fun(request):
+    username = A.x
+    s1 = Student.objects.get(student_name=username)
+    if request.method == 'POST':
+        return render(request, 'updateprofile.html', {'sd': s1})
+    return render(request, 'stdprofile.html', {'data': username, 'sd': s1})
+
+
+def updateprofile_fun(request):
+    return render(request, 'updateprofile.html')
+
+
+def profiledata_fun(request):
+    s1 = Student.objects.get(student_name=A.x)
+    s1.student_name = request.POST['tbuname']
+    s1.student_phno = request.POST['tbphno']
+    s1.student_sem = request.POST['tbsem']
+    s1.student_password = request.POST['tbpass']
+    s1.save()
+    A.x = request.POST['tbuname']
+    return redirect('stdprofile')
